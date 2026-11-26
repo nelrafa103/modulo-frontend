@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/javascript/alpine.min.js" defer></script>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Index</title>
+</head>
+
+<body>
+    <nav class="header" x-data="{ open: false }">
+
+        <a href="/" class="logo">
+            <img src="/images/logo.webp" alt="Logo" width="50" height="50">
+        </a>
+
+        <ul class="nav-links" :class="{ 'active': open }">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/features">Features</a></li>
+            <li><a href="/blog">Blog</a></li>
+        </ul>
+
+        <div class="header-actions">
+            <button class="btn" data-variant="primary">
+                {{ .getStarted }}
+            </button>
+
+            <button class="btn menu-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle navigation"
+                type="button">
+                <img src="/images/menu.svg" alt="" width="24" height="24">
+            </button>
+        </div>
+
+    </nav>
+
+    <main>
+
+        <section class="hero">
+
+
+            <div class="hero-image">
+                <img src="/images/hot-air-balloon.svg" alt="Hero Image">
+
+            </div>
+
+
+            <div class="hero-content">
+                <h1>
+                    Welcome to a new adventure in web development with Go and Gin!
+                </h1>
+                <p>
+                    This is a simple web application built using the Go programming language and the Gin web framework.
+                    It
+                    serves as a starting point for building web applications with Go, providing a basic structure and
+                    routing setup.
+                </p>
+                <button class="btn" data-variant="secondary">{{ .getStarted }}</button>
+            </div>
+
+
+
+        </section>
+        <section class="features">
+            <div class="feature-item">
+                <img src="/images/rotate-cw-clock.svg" alt="Feature 1">
+                <h2>Fast and Efficient</h2>
+                <p>Gin is a high-performance web framework that allows you to build web applications quickly and
+                    efficiently.</p>
+            </div>
+
+            <div class="feature-item">
+                <img src="/images/square-text.svg" alt="Feature 1">
+                <h2>Fast and Efficient</h2>
+                <p>Gin is a high-performance web framework that allows you to build web applications quickly and
+                    efficiently.</p>
+            </div>
+
+            <div class="feature-item">
+                <img src="/images/users-round-collaboration.svg" alt="Feature 1">
+                <h2>Fast and Efficient</h2>
+                <p>Gin is a high-performance web framework that allows you to build web applications quickly and
+                    efficiently.</p>
+            </div>
+        </section>
+
+
+        <section class="support">
+            <h2>
+                Bring your own hosting provider or use one of the supported providers above to deploy your application
+                with
+                ease.
+            </h2>
+
+            <div class="support-icons">
+
+
+                <div>
+                    <img src="/images/aws_light.svg" alt="AWS Logo" width="100" height="50">
+                </div>
+                <div>
+                    <img src="/images/google-cloud.svg" alt="Google Cloud Logo" width="100" height="50">
+
+                </div>
+                <div>
+                    <img src="/images/azure.svg" alt="Azure Logo" width="100" height="50">
+                </div>
+                <div>
+                    <img src="/images/planetscale.svg" alt="Planetscale Logo" width="100" height="50">
+                </div>
+                <div>
+                    <img src="/images/cloudflare.svg" alt="Cloudflare Logo" width="100" height="50">
+                </div>
+            </div>
+        </section>
+
+        <section class="technical">
+            <div>
+                <p>
+                    This application is built using the Go programming language and the Gin web framework. It serves as
+                    a
+                    starting point for building web applications with Go, providing a basic structure and routing setup.
+                </p>
+                <p>
+                    This application is built using the Go programming language and the Gin web framework. It serves as
+                    a
+                    starting point for building web applications with Go, providing a basic structure and routing setup.
+                </p>
+            </div>
+
+
+            <div>
+                <img src="/images/hot-air-balloon.svg" alt="Technical Image">
+            </div>
+        </section>
+
+
+        <h3 style="padding-left: 2rem; margin-top: 2rem; margin-bottom: 1.5rem;">
+            Pricing
+        </h3>
+        <section class="pricing">
+            <div class="pricing-cards">
+                <div>
+                    <h3>Basic plan</h3>
+                    <p>
+                        This plan is perfect for individuals or small teams who are just getting started with web
+                        development
+                        and want to explore the capabilities of the Go programming language and the Gin web framework.
+                    </p>
+                </div>
+
+
+                <button class="btn" data-variant="secondary">
+                    Buy
+                </button>
+            </div>
+            <div class="pricing-cards">
+                <div>
+                    <h3>Basic plan</h3>
+                    <p>
+                        This plan is perfect for individuals or small teams who are just getting started with web
+                        development
+                        and want to explore the capabilities of the Go programming language and the Gin web framework.
+                    </p>
+                </div>
+
+
+                <button class="btn" data-variant="primary">
+                    Buy
+                </button>
+            </div>
+
+            <div class="pricing-cards">
+                <div>
+                    <h3>Basic plan</h3>
+                    <p>
+                        This plan is perfect for individuals or small teams who are just getting started with web
+                        development
+                        and want to explore the capabilities of the Go programming language and the Gin web framework.
+                    </p>
+                </div>
+
+
+                <button class="btn" data-variant="secondary">
+                    Buy
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div>
+            <h6>About</h6>
+            <p>
+                This application is built using the Go programming language and the Gin web framework. It serves as a
+                starting point for building web applications with Go, providing a basic structure and routing setup.
+            </p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

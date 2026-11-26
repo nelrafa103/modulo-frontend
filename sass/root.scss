@@ -1,0 +1,7 @@
+@use "variables";
+
+
+.btn-primary {
+    background-color: variables.$primary;
+    color: variables.$foreground;
+}

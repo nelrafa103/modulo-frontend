@@ -1,0 +1,121 @@
+@use "variables";
+
+.header {
+    background-color: variables.$secondary;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    min-height: 4rem;
+    position: relative;
+    z-index: 100;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+
+        img {
+            display: block;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+    }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding-left: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+
+    .header-actions {
+        justify-self: flex-end;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .menu-toggle {
+        display: none;
+        padding: 0.5rem;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+
+        img {
+            display: block;
+        }
+    }
+}
+
+// TABLET
+
+@media (max-width: 992px) {
+    .header {
+        padding: 0.75rem 1.5rem;
+
+        .nav-links {
+            gap: 1rem;
+        }
+    }
+}
+
+// MOBILE
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0.75rem 1rem;
+
+        .menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            padding: 0.5rem 1rem 1rem;
+            background-color: variables.$secondary;
+
+            &.active {
+                display: flex;
+            }
+
+            li {
+                width: 100%;
+            }
+
+            a {
+                display: block;
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+.footer {
+    display: grid;
+    background-color: variables.$secondary;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6rem;
+    color: white;
+    margin-top: 12rem;
+    padding: 4rem;
+    min-height: 30vh;
+}

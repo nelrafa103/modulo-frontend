@@ -1,0 +1,346 @@
+@use "components";
+@use "variables";
+@use "layouts";
+
+// ========================================
+// BUTTONS
+// ========================================
+
+.btn[data-variant="primary"] {
+    @extend .btn;
+    background-color: variables.$primary;
+    border-color: variables.$primary;
+    font-weight: bold;
+    font-size: 1rem;
+    color: variables.$foreground;
+}
+
+.btn[data-variant="secondary"] {
+    @extend .btn;
+    background-color: variables.$secondary;
+    border-color: variables.$secondary;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+}
+
+// ========================================
+// GLOBAL
+// ========================================
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        'Noto Sans',
+        Arial,
+        sans-serif,
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji';
+}
+
+// ========================================
+// HERO
+// ========================================
+
+.hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem 4rem;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        text-align: left;
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        text-align: left;
+    }
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    justify-content: center;
+}
+
+.hero-image {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+// ========================================
+// FEATURES
+// ========================================
+
+.features {
+    background-color: variables.$quaternary;
+    padding: 2rem;
+    min-height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+
+    img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+        object-fit: contain;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+// ========================================
+// SUPPORT
+// ========================================
+
+.support {
+    padding: 4rem;
+
+    h2 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+}
+
+.support-icons {
+    margin-top: 4rem;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2rem;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+// ========================================
+// TECHNICAL
+// ========================================
+
+.technical {
+    background-color: variables.$secondary;
+    padding: 4rem;
+    min-height: 40vh;
+    margin-top: 4rem;
+    display: grid;
+    color: white;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+
+    p {
+        margin-bottom: 2rem;
+        font-weight: bold;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+// ========================================
+// PRICING
+// ========================================
+
+.pricing {
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pricing-cards {
+    display: flex;
+    min-height: 45vh;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 1rem;
+    border: 1px solid variables.$quinary;
+    border-radius: 0.25rem;
+
+    h3 {
+        margin-block-end: 0;
+    }
+
+    p {
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+// ========================================
+// TABLETS (max-width: 992px)
+// ========================================
+
+@media (max-width: 992px) {
+
+    .hero {
+        padding: 2rem;
+        gap: 1rem;
+    }
+
+    .hero-image img {
+        width: 90%;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .support {
+        padding: 3rem 2rem;
+    }
+
+    .support-icons {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .technical {
+        padding: 3rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .pricing {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+// ========================================
+// MOBILE (max-width: 576px)
+// ========================================
+
+@media (max-width: 576px) {
+
+    .hero {
+        flex-direction: column;
+        min-height: auto;
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+
+        h1,
+        p {
+            text-align: center;
+        }
+    }
+
+    .hero-content {
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-image {
+        width: 100%;
+
+        img {
+            width: 85%;
+        }
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .feature-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .support {
+        padding: 3rem 1.5rem;
+    }
+
+    .support-icons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem 1rem;
+        margin-top: 2rem;
+    }
+
+    .technical {
+        padding: 2rem 1.5rem;
+        margin-top: 2rem;
+        grid-template-columns: 1fr;
+    }
+
+    .pricing {
+        padding: 0 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .pricing-cards {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .btn {
+        max-width: 100%;
+    }
+}

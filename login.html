@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="/css/login.css" rel="stylesheet">
+    <script src="/javascript/htmx.min.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="/images/logo.webp" alt="Logo" width="64" height="64">
+        <form class="form">
+            <div>
+                <h4 class="container_title">Welcome to the App</h4>
+                <p class="container__subtitle">
+                    We're happy to see you back in town!
+                </p>
+            </div>
+            <fieldset class="form__field">
+                <label for="email" class="form__label">Email</label>
+                <input class="form__input" name="email" placeholder="Enter your email" type="email" required>
+            </fieldset>
+            <fieldset class="form__field">
+                <label for="password" class="form__label">Password</label>
+                <input name="password" class="form__input" placeholder="Your password" type="password" required>
+            </fieldset>
+            <p class="form__text">If you don't have an account, click <a href="/register" class="form__link">
+                    here</a>. if you lost your password, click <a href="/recover" class="form__link">
+                    here</a>.</p>
+            <button type="submit" class="btn" data-variant="secondary">
+                Submit
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -29,6 +29,10 @@
 .header .nav-links {
   list-style: none;
   margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
   padding-left: 2rem;
   display: flex;
   align-items: center;
@@ -69,23 +73,19 @@
   .header {
     padding: 0.75rem 1rem;
   }
-  .header .menu-toggle {
-    display: flex;
-  }
   .header .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    inset: auto;
+    top: calc(50px + 1.5rem);
+    width: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
     padding: 0.5rem 1rem 1rem;
+    margin: 0;
     background-color: #242423;
-  }
-  .header .nav-links.active {
-    display: flex;
   }
   .header .nav-links li {
     width: 100%;
@@ -93,6 +93,36 @@
   .header .nav-links a {
     display: block;
     padding: 1rem;
+  }
+}
+@supports selector(:popover-open) {
+  @media (max-width: 768px) {
+    .header .menu-toggle {
+      display: flex;
+    }
+    .header .nav-links:not(:popover-open) {
+      display: none;
+    }
+  }
+  @media (min-width: 769px) {
+    .header .nav-links {
+      position: static;
+      inset: auto;
+      padding: 0 0 0 2rem;
+    }
+  }
+}
+@supports (anchor-name: --header) and (position-anchor: --header) {
+  @media (max-width: 768px) {
+    .header {
+      anchor-name: --header;
+    }
+    .header .nav-links {
+      position-anchor: --header;
+      top: anchor(bottom);
+      left: anchor(left);
+      right: anchor(right);
+    }
   }
 }
 .footer {

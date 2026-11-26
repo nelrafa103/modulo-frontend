@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
-    <script src="/javascript/alpine.min.js" defer></script>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <title>Index</title>
 </head>
 
 <body>
-    <nav class="header" x-data="{ open: false }">
+    <nav class="header">
 
         <a href="/" class="logo">
             <img src="/images/logo.webp" alt="Logo" width="50" height="50">
         </a>
 
-        <ul class="nav-links" :class="{ 'active': open }">
+        <ul class="nav-links" id="primary-navigation" popover="auto">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/pricing">Pricing</a></li>
@@ -27,11 +26,11 @@
 
         <div class="header-actions">
             <button class="btn" data-variant="primary">
-                {{ .getStarted }}
+                Get started
             </button>
 
-            <button class="btn menu-toggle" @click="open = !open" :aria-expanded="open" aria-label="Toggle navigation"
-                type="button">
+            <button class="btn menu-toggle" commandfor="primary-navigation" command="toggle-popover"
+                aria-controls="primary-navigation" aria-label="Toggle navigation" type="button">
                 <img src="/images/menu.svg" alt="" width="24" height="24">
             </button>
         </div>
@@ -59,7 +58,7 @@
                     serves as a starting point for building web applications with Go, providing a basic structure and
                     routing setup.
                 </p>
-                <button class="btn" data-variant="secondary">{{ .getStarted }}</button>
+                <button class="btn" data-variant="secondary">Sign in</button>
             </div>
 
 

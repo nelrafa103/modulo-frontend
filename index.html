@@ -4,9 +4,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <title>Index</title>
+    <style>
+        .btn,
+        .btn[data-variant=primary],
+        .btn[data-variant=secondary] {
+            padding: 0.5rem 1rem;
+            border-width: 1px;
+            border-radius: 0.25rem;
+            border-style: solid;
+        }
+
+        .header {
+            background-color: #242423;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            min-height: 4rem;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header .logo img {
+            display: block;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .header .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            padding-left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header .header-actions {
+            justify-self: flex-end;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header .menu-toggle {
+            display: none;
+            padding: 0.5rem;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .header .menu-toggle img {
+            display: block;
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .header .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.75rem 1rem;
+            }
+
+            .header .nav-links {
+                position: fixed;
+                inset: auto;
+                top: calc(50px + 1.5rem);
+                width: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 0.5rem 1rem 1rem;
+                margin: 0;
+                background-color: #242423;
+            }
+
+            .header .nav-links li {
+                width: 100%;
+            }
+
+            .header .nav-links a {
+                display: block;
+                padding: 1rem;
+            }
+        }
+
+        @supports selector(:popover-open) {
+            @media (max-width: 768px) {
+                .header .menu-toggle {
+                    display: flex;
+                }
+
+                .header .nav-links:not(:popover-open) {
+                    display: none;
+                }
+            }
+
+            @media (min-width: 769px) {
+                .header .nav-links {
+                    position: static;
+                    inset: auto;
+                    padding: 0 0 0 2rem;
+                }
+            }
+        }
+
+        @supports (anchor-name: --header) and (position-anchor: --header) {
+            @media (max-width: 768px) {
+                .header {
+                    anchor-name: --header;
+                }
+
+                .header .nav-links {
+                    position-anchor: --header;
+                    top: anchor(bottom);
+                    left: anchor(left);
+                    right: anchor(right);
+                }
+            }
+        }
+
+        .footer {
+            display: grid;
+            background-color: #242423;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6rem;
+            color: white;
+            margin-top: 12rem;
+            padding: 4rem;
+            min-height: 30vh;
+        }
+
+        .btn[data-variant=primary] {
+            background-color: #F5CB5C;
+            border-color: #F5CB5C;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #000;
+        }
+
+        .btn[data-variant=secondary] {
+            background-color: #242423;
+            border-color: #242423;
+            font-weight: bold;
+            font-size: 1rem;
+            color: white;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            padding: 2rem 4rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero h1 {
+            text-align: left;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+            text-align: left;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 50%;
+            justify-content: center;
+        }
+
+        .hero-image {
+            display: flex;
+            width: 50%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 70%;
+            max-width: 500px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .features {
+            background-color: #e8eddf;
+            padding: 2rem;
+            min-height: 40vh;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .feature-item h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .support {
+            padding: 4rem;
+        }
+
+        .support h2 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .support-icons {
+            margin-top: 4rem;
+            align-items: center;
+            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .support-icons div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .support-icons img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .technical {
+            background-color: #242423;
+            padding: 4rem;
+            min-height: 40vh;
+            margin-top: 4rem;
+            display: grid;
+            color: white;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .technical p {
+            margin-bottom: 2rem;
+            font-weight: bold;
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .pricing {
+            padding: 0 2rem;
+            margin-bottom: 4rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .pricing-cards {
+            display: flex;
+            min-height: 45vh;
+            flex-direction: column;
+            text-align: left;
+            justify-content: space-between;
+            padding: 2rem;
+            gap: 1rem;
+            border: 1px solid #cfdbd5;
+            border-radius: 0.25rem;
+        }
+
+        .pricing-cards h3 {
+            margin-block-end: 0;
+        }
+
+        .pricing-cards p {
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .hero-image img {
+                width: 90%;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .support {
+                padding: 3rem 2rem;
+            }
+
+            .support-icons {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 2rem;
+            }
+
+            .technical {
+                padding: 3rem;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pricing {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                flex-direction: column;
+                min-height: auto;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+            }
+
+            .hero h1,
+            .hero p {
+                text-align: center;
+            }
+
+            .hero-content {
+                width: 100%;
+                align-items: center;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-image img {
+                width: 85%;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+
+            .feature-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .support {
+                padding: 3rem 1.5rem;
+            }
+
+            .support-icons {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 2rem 1rem;
+                margin-top: 2rem;
+            }
+
+            .technical {
+                padding: 2rem 1.5rem;
+                margin-top: 2rem;
+                grid-template-columns: 1fr;
+            }
+
+            .pricing {
+                padding: 0 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-cards {
+                min-height: auto;
+                padding: 1.5rem;
+            }
+
+            .btn,
+            .btn[data-variant=primary],
+            .btn[data-variant=secondary] {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
